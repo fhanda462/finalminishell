@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fhanda <fhanda@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hazali <hazali@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/05 05:24:06 by hazali            #+#    #+#             */
-/*   Updated: 2026/03/10 14:00:59 by fhanda           ###   ########.fr       */
+/*   Updated: 2026/03/10 15:55:02 by hazali           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,8 @@ static void	cleanup_shell(t_minishell *shell)
 	close(shell->stdin);
 	close(shell->stdout);
 	rl_clear_history();
+    rl_free_line_state();
+    rl_cleanup_after_signal();
 }
 
 static int	process_line(char *line, t_minishell *shell)

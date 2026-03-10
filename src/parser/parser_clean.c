@@ -6,7 +6,7 @@
 /*   By: hazali <hazali@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/25 02:31:53 by hazali            #+#    #+#             */
-/*   Updated: 2026/02/25 04:42:41 by hazali           ###   ########.fr       */
+/*   Updated: 2026/03/10 15:42:24 by hazali           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	ft_clear_ast(t_node **ast)
 		return ;
 	ft_clear_ast(&(*ast)->left);
 	ft_clear_ast(&(*ast)->right);
+	if ((*ast)->args)
+		free_args((*ast)->args);
 	if ((*ast)->expand_args)
 		free_args((*ast)->expand_args);
 	if ((*ast)->io_list)

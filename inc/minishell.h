@@ -6,7 +6,7 @@
 /*   By: hazali <hazali@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/05 05:25:25 by hazali            #+#    #+#             */
-/*   Updated: 2026/03/08 17:22:04 by hazali           ###   ########.fr       */
+/*   Updated: 2026/03/12 21:13:39 by hazali           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ typedef struct s_minishell
 	t_token			*tokens;
 	t_token			*curr_token;
 	int				exit_s;
-	int				stdin;
-	int				stdout;
+	// int				stdin;
+	// int				stdout;
 	char			**environ;
 	t_env			*envlst;
 }					t_minishell;

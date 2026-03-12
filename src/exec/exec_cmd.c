@@ -6,7 +6,7 @@
 /*   By: hazali <hazali@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/09 09:46:56 by hazali            #+#    #+#             */
-/*   Updated: 2026/03/08 17:29:33 by hazali           ###   ########.fr       */
+/*   Updated: 2026/03/12 21:17:29 by hazali           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,15 +52,19 @@ int	handle_builtin(t_node *cmd_node, t_minishell *shell)
 	int	fd_stdout;
 	int	exit;
 
-	fd_stdin = dup(STDIN_FILENO);
-	fd_stdout = dup(STDOUT_FILENO);
-	if (handle_redir(cmd_node->io_list) == -1)
+	if (cmd_node->io_list)
 	{
-		reset_fds_std(fd_stdin, fd_stdout);
-		return (1);
+		fd_stdin = dup(STDIN_FILENO);
+		fd_stdout = dup(STDOUT_FILENO);
+		if (handle_redir(cmd_node->io_list) == -1)
+		{
+			reset_fds_std(fd_stdin, fd_stdout);
+			return (1);
+		}
 	}
 	exit = ft_exec_builtin(cmd_node->expand_args, shell);
-	reset_fds_std(fd_stdin, fd_stdout);
+	if (cmd_node->io_list)
+		reset_fds_std(fd_stdin, fd_stdout);
 	return (exit);
 }
 

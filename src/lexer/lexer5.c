@@ -6,7 +6,7 @@
 /*   By: hazali <hazali@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/25 04:22:30 by hazali            #+#    #+#             */
-/*   Updated: 2026/03/08 17:29:45 by hazali           ###   ########.fr       */
+/*   Updated: 2026/03/12 22:02:47 by hazali           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,23 +60,23 @@ int	ft_append_word(char **ptr_line, t_token **token_list)
 	return (ft_add_token(token_list, token), 1);
 }
 
-void	print_tokens(t_token *tokens)
-{
-	t_token				*curr;
-	static const char	*type_names[] = {"WORD", "LESS", "GREAT", "DLESS",
-		"DGREAT", "PIPE", "OPEN_PARENT", "CLOSE_PARENT", "AND", "OR"};
+// void	print_tokens(t_token *tokens)
+// {
+// 	t_token				*curr;
+// 	static const char	*type_names[] = {"WORD", "LESS", "GREAT", "DLESS",
+// 		"DGREAT", "PIPE", "OPEN_PARENT", "CLOSE_PARENT", "AND", "OR"};
 
-	curr = tokens;
-	printf("=== TOKENS ===\n");
-	while (curr)
-	{
-		printf("[%s]", type_names[curr->type]);
-		if (curr->value)
-			printf(" '%s'", curr->value);
-		if (curr->fd > 0)
-			printf(" (fd: %d)", curr->fd);
-		printf("\n");
-		curr = curr->next;
-	}
-	printf("==============\n");
-}
+// 	curr = tokens;
+// 	printf("=== TOKENS ===\n");
+// 	while (curr)
+// 	{
+// 		printf("[%s]", type_names[curr->type]);
+// 		if (curr->value)
+// 			printf(" '%s'", curr->value);
+// 		if (curr->fd > 0)
+// 			printf(" (fd: %d)", curr->fd);
+// 		printf("\n");
+// 		curr = curr->next;
+// 	}
+// 	printf("==============\n");
+// }

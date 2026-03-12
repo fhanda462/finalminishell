@@ -6,7 +6,7 @@
 /*   By: hazali <hazali@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/05 05:24:06 by hazali            #+#    #+#             */
-/*   Updated: 2026/03/10 15:55:02 by hazali           ###   ########.fr       */
+/*   Updated: 2026/03/12 22:01:42 by hazali           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,8 +91,6 @@
 static void	init_shell(t_minishell *shell, char **envp)
 {
 	shell->exit_s = 0;
-	shell->stdin = dup(STDIN_FILENO);
-	shell->stdout = dup(STDOUT_FILENO);
 	shell->environ = envp;
 	shell->envlst = init_env_list(envp);
 }
@@ -100,11 +98,9 @@ static void	init_shell(t_minishell *shell, char **envp)
 static void	cleanup_shell(t_minishell *shell)
 {
 	free_env_list(&shell->envlst);
-	close(shell->stdin);
-	close(shell->stdout);
 	rl_clear_history();
-    rl_free_line_state();
-    rl_cleanup_after_signal();
+	rl_free_line_state();
+	rl_cleanup_after_signal();
 }
 
 static int	process_line(char *line, t_minishell *shell)

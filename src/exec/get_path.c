@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   get_path.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fhanda <fhanda@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hazali <hazali@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/20 12:34:04 by hazali            #+#    #+#             */
-/*   Updated: 2026/03/10 14:42:11 by fhanda           ###   ########.fr       */
+/*   Updated: 2026/03/12 21:58:09 by hazali           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
+#include <sys/stat.h>
 
 char	**get_paths_env(char **envp)
 {
@@ -41,6 +42,15 @@ char	*build_full_path(char *dir, char *cmd)
 	full_path = ft_strjoin(tmp, cmd);
 	free(tmp);
 	return (full_path);
+}
+
+int	is_directory(const char *path)
+{
+	struct stat	path_stat;
+
+	if (stat(path, &path_stat) != 0)
+		return (S_ISDIR(path_stat.st_mode));
+	return (1);
 }
 
 char	*check_absolute_path(char *cmd)

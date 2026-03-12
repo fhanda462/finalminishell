@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redir.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fhanda <fhanda@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hazali <hazali@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/20 12:34:02 by hazali            #+#    #+#             */
-/*   Updated: 2026/03/10 14:49:38 by fhanda           ###   ########.fr       */
+/*   Updated: 2026/03/12 21:07:22 by hazali           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	open_redir_file(t_io_node *redir)
 {
 	int	fd;
 
-	if (redir->type == IO_IN) 
+	if (redir->type == IO_IN)
 		fd = open(redir->value, O_RDONLY);
 	else if (redir->type == IO_OUT)
 		fd = open(redir->value, O_WRONLY | O_CREAT | O_TRUNC, 0644);
